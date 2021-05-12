@@ -3,8 +3,46 @@
 <head>
 	<title>Band Name Generator</title>
 	<meta charset="utf-8">
-    <link rel="stylesheet" href="">
+    <!--<link rel="stylesheet" href="">-->
     <script src="bandNameGenerator.js"></script>
+    <script>
+        let randIndex1 = Math.floor(Math.random() * numList.length);
+        let randIndex2 = Math.floor(Math.random() * adjectivesList.length);
+        let randIndex3 = Math.floor(Math.random() * nounList.length);
+
+        let endInSOrYTest = nounList[randIndex3].slice(-1);
+        let endInChOrShTest = nounList[randIndex3].slice(-2);
+
+        let bandName = "";
+        const generateName = () => {
+            if (randIndex1 > 1 && endInSOrYTest == 's') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
+            } else if(randIndex1 == 0 && endInSOrYTest =='s') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;  
+            } else if (randIndex1 > 1 && endInSOrYTest == 'y') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}ies`;
+            } else if (randIndex1 == 0 && endInSOrYTest == 'y') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}ies`;
+            } else if (randIndex1 > 1 && endInChOrShTest == 'ch') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
+            } else if (randIndex1 == 0 && endInChOrShTest == 'ch') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
+            } else if(randIndex1 > 1 && endInChOrShTest == 'sh') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
+            } else if (randIndex1 == 0 && endInChOrShTest == 'sh') {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
+            } else if (randIndex1 > 1 || randIndex1 == 0) {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}s`;
+            } else {
+                bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}`;
+            }
+            return document.getElementById("nameArea").value = bandName;
+        }; // Inputs band name twice in textarea?
+
+        console.log(endInSOrYTest);
+        console.log(endInChOrShTest);
+        console.log(generateName());
+    </script>
 </head>
 <body>
     <h1>Band Name Generator</h1>
@@ -13,8 +51,8 @@
     <br>
     <br>
     <h3>Your Band Name:</h3>
-    <textarea name="nameArea" id="nameArea" rows="1" cols="40"></textarea><br>
-    <button type="button" id="clear" onclick="clear()"> Clear </button><br>
+    <p id="nameArea">HERE</p><br>
+    <!--<button type="button" id="clear" onclick="clear()"> Clear </button><br>-->
     <br>
     <br>
     <br>

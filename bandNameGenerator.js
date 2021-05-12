@@ -614,34 +614,9 @@ const nounList = ['Men',
 'Dress',
 'Custard'];
 
-let randIndex1 = Math.floor(Math.random() * numList.length);
-let randIndex2 = Math.floor(Math.random() * adjectivesList.length);
-let randIndex3 = Math.floor(Math.random() * nounList.length);
-
-let endInSOrHTest = nounList[randIndex3].slice(-1);
-
-let bandName = "";
-const generateName = () => {
-    if (randIndex1 > 1 && endInSOrHTest == 's') {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
-    } else if (randIndex1 > 1 && endInSOrHTest == 'h') {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
-    } else if (randIndex1 == 0 && endInSOrHTest == 's') {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
-    } else if (randIndex1 == 0 && endInSOrHTest == 'h') {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
-    } else if (randIndex1 > 1 || randIndex1 == 0) {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}s`;
-    } else {
-        bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}`;
-    }
-    return document.getElementById("nameArea").value = bandName;
-}; // Inputs band name twice in textarea?
-
-const clear = () => {
+/*const clear = () => {
    return document.getElementById("nameArea").value = ""; // Is not working in webpage?
 };
+*/
 
 
-console.log(endInSOrHTest);
-console.log(generateName());
