@@ -636,10 +636,10 @@ const generateName = () => {
         bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}`;
     }
     return document.getElementById("nameArea").value = bandName;
-};
+}; // Inputs band name twice in textarea?
 
 const clear = () => {
-    document.getElementById("nameArea").value = "";
+   return document.getElementById("nameArea").value = ""; // Is not working in webpage?
 };
 
 
