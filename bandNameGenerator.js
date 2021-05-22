@@ -613,10 +613,3 @@ const nounList = ['Men',
 'Curtain',
 'Dress',
 'Custard'];
-
-/*const clear = () => {
-   return document.getElementById("nameArea").value = ""; // Is not working in webpage?
-};
-*/
-
-

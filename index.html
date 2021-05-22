@@ -6,15 +6,19 @@
     <!--<link rel="stylesheet" href="">-->
     <script src="bandNameGenerator.js"></script>
     <script>
-        let randIndex1 = Math.floor(Math.random() * numList.length);
-        let randIndex2 = Math.floor(Math.random() * adjectivesList.length);
-        let randIndex3 = Math.floor(Math.random() * nounList.length);
-
-        let endInSOrYTest = nounList[randIndex3].slice(-1);
-        let endInChOrShTest = nounList[randIndex3].slice(-2);
-
-        let bandName = "";
+        /* Function to generate random indexes for arrays and take into account rules for plural words depending on 
+        ending letters and number returned in name */
         const generateName = () => {
+            let randIndex1 = Math.floor(Math.random() * numList.length);
+            let randIndex2 = Math.floor(Math.random() * adjectivesList.length);
+            let randIndex3 = Math.floor(Math.random() * nounList.length);
+            let endInSOrYTest = nounList[randIndex3].slice(-1);
+            let endInChOrShTest = nounList[randIndex3].slice(-2);
+            let bandName = "";
+
+            if (endInSOrYTest == 'y') {
+               let removeY = nounList[randIndex3].pop();
+            }
             if (randIndex1 > 1 && endInSOrYTest == 's') {
                 bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}es`;
             } else if(randIndex1 == 0 && endInSOrYTest =='s') {
@@ -36,8 +40,13 @@
             } else {
                 bandName += `${numList[randIndex1]} ${adjectivesList[randIndex2]} ${nounList[randIndex3]}`;
             }
-            return document.getElementById("nameArea").value = bandName;
-        }; // Inputs band name twice in textarea?
+            return document.getElementById("nameArea").innerHTML = bandName;
+        }; // Inputs band name twice in textarea for first button click only?
+
+        //Clear function
+        function clearContent() {
+            document.getElementById("nameArea").innerHTML = "";
+        };
 
         console.log(endInSOrYTest);
         console.log(endInChOrShTest);
@@ -51,15 +60,17 @@
     <br>
     <br>
     <h3>Your Band Name:</h3>
-    <p id="nameArea">HERE</p><br>
-    <!--<button type="button" id="clear" onclick="clear()"> Clear </button><br>-->
+    <div id="nameArea" name="nameArea">
+        HERE
+    </div>
     <br>
     <br>
     <br>
-    <label>Generate a random Band Name: <button type="button" onclick="generateName()" id="generateName">Make a Name</button></label>
+    <label>Generate a random Band Name: <button type="button" onclick="generateName()" id="generateName">Make a Name</button></label> &nbsp; <button type="button" id="clear" onclick="clearContent()"> Clear </button>
+    <br>
     <br>
     Click the button above to generate a random Band name consisting of a number, an adjective and a noun!
- 
+            
 
 </body>
 </html>
